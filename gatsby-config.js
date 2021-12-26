@@ -20,5 +20,6 @@ module.exports = {
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-client-side-redirect`,
 	],
 };

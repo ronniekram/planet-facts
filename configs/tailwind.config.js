@@ -26,10 +26,10 @@ module.exports = {
 			// bold
 			'h3': `1.5625rem`,
 			'h4': `0.6875rem`,
-			// regular
-			'body': `0.875rem`,
 			'button-large': `0.75rem`,
 			'button-small': `0.5625rem`,
+			// regular
+			'body': `0.875rem`,
 		},
 		fontWeight: {
 			regular: 400,

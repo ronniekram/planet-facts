@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import tw, { styled, css } from 'twin.macro';
+import Button from '../components/basic/button';
 import { PlanetProps } from '../utils/planet-utils';
 
 
@@ -9,8 +10,9 @@ const Planet = ({ data }: PlanetProps) => {
   const { id, name, radius, revolution, rotation, temperature, slug, planetOverview, structureOverview, geologyOverview, image, internalImage, geologyImage } = data.planet;
 
   return (
-    <div>
+    <div tw="w-screen h-screen flex justify-center items-center content-center">
       <h1>{name}</h1>
+      <Button number="01" label="Overview" activeColor="blue-100" size="DESKTOP" active={false} />
     </div>
   )
 

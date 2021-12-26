@@ -30,3 +30,24 @@ export const backgroundColors: {
   "gold-100": [tw`bg-gold-100`],
   "purple-100": [tw`bg-purple-100`],
 }
+
+// Text Colors
+export const textColors: {
+	[key in Color]: (TwStyle | SerializedStyles)[];
+} = {
+  "white": [tw`text-white`],
+  "black": [tw`text-black`],
+  "transparent": [tw`text-transparent`],
+  "currentColor": [tw`text-current`],
+  "blue-100": [tw`text-blue-100`],
+  "blue-300": [tw`text-blue-300`],
+  "blue-900": [tw`text-blue-900`],
+  "orange-100": [tw`text-orange-100`],
+  "orange-300": [tw`text-orange-300`],
+  "red-100": [tw`text-red-100`],
+  "grey-100": [tw`text-grey-100`],
+  "grey-800": [tw`text-grey-800`],
+  "teal-100": [tw`text-teal-100`],
+  "gold-100": [tw`text-gold-100`],
+  "purple-100": [tw`text-purple-100`],
+}

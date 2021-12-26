@@ -21,13 +21,15 @@ module.exports = {
 		},
 		fontSize: {
 			// medium
-			h1: `5rem`,
-			h2: `2.5rem`,
+			'h1': `5rem`,
+			'h2': `2.5rem`,
 			// bold
-			h3: `1.5625rem`,
-			h4: `0.6875rem`,
+			'h3': `1.5625rem`,
+			'h4': `0.6875rem`,
 			// regular
-			body: `0.875rem`,
+			'body': `0.875rem`,
+			'button-large': `0.75rem`,
+			'button-small': `0.5625rem`,
 		},
 		fontWeight: {
 			regular: 400,
@@ -39,16 +41,20 @@ module.exports = {
 			spartan: [`Spartan`, `sans-serif`],
 		},
 		lineHeight: {
-			h1: `6.4375rem`,
-			h2: `3.25rem`,
-			h3: `1.5625rem`,
-			h4: `1.5625rem`,
-			body: `1.5625rem`,
+			'h1': `6.4375rem`,
+			'h2': `3.25rem`,
+			'h3': `1.5625rem`,
+			'h4': `1.5625rem`,
+			'body': `1.5625rem`,
+			'button-large': `1.5625rem`,
+			'button-small': `1.5625rem`,
 		},
 		letterSpacing: {
-			h2: `-1.5px`,
-			h3: `2.6px`,
-			h4: `1px`,
+			'h2': `-1.5px`,
+			'h3': `2.6px`,
+			'h4': `1px`,
+			'button-large': `2.6px`,
+			'button-small': `1.93px`,
 		},
 	},
 };

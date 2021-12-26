@@ -16,7 +16,7 @@ async function createPlanetPages({ actions, graphql }) {
 	data.planets.nodes.forEach(node => {
 		const slug = node.slug.current;
 		actions.createPage({
-			path: `/${slug}`,
+			path: `/planets/${slug}`,
 			component: require.resolve(
 				`./src/templates/planet.tsx`
 			),
@@ -26,12 +26,5 @@ async function createPlanetPages({ actions, graphql }) {
 }
 
 exports.createPages = async function (params) {
-	const { createRedirect } = params.actions;
-
 	await Promise.all([createPlanetPages(params)]);
-	await createRedirect({
-		fromPath: '/',
-		toPath: '/mercury',
-		isPermanent: true,
-	});
 };

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { GlobalStyles } from "twin.macro";
+import tw, { GlobalStyles } from "twin.macro";
+import "../assets/fonts/fonts.css";
 
 const Layout = ({
 	children,
@@ -7,7 +8,7 @@ const Layout = ({
 }: {
 	children: React.ReactNode;
 }): JSX.Element => (
-	<div {...rest}>
+	<div {...rest} tw="antialiased">
 		<GlobalStyles />
 		{children}
 	</div>

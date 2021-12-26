@@ -5,7 +5,8 @@ import { PlanetProps } from '../utils/planet-utils';
 
 
 const Planet = ({ data }: PlanetProps) => {
-  const { id, name, radius, revolution, rotation, temperature, slug, planetOverview, structureOverview, geologyOverview, image, internalImage, geologyImage } = data;
+  console.log(data);
+  const { id, name, radius, revolution, rotation, temperature, slug, planetOverview, structureOverview, geologyOverview, image, internalImage, geologyImage } = data.planet;
 
   return (
     <div>
@@ -19,7 +20,9 @@ export default Planet;
 
 export const query = graphql`
   query ($slug: String!) {
-    planet: sanityPlanet {
+    planet: sanityPlanet (
+        slug: { current: { eq: $slug } } 
+    ) {
       id
       name
       radius

@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 import "twin.macro";
 
 const Home = (): JSX.Element => {

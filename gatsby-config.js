@@ -5,6 +5,7 @@ module.exports = {
 		author: `@ronniekram`,
 	},
 	plugins: [
+		{ resolve: `gatsby-plugin-emotion` },
 		{
 			resolve: `gatsby-source-sanity`,
 			options: {

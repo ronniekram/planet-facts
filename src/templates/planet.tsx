@@ -28,6 +28,7 @@ const mobileLinks = ['Overview', 'Structure', 'Surface'];
 const Planet = ({ data }: PlanetProps) => {
 	const {
 		name,
+		slug,
 		radius,
 		revolution,
 		rotation,
@@ -90,7 +91,6 @@ const Planet = ({ data }: PlanetProps) => {
 		));
 	};
 
-	console.log(open);
 	return (
 		<Layout>
 			<Nav />
@@ -138,13 +138,12 @@ const Planet = ({ data }: PlanetProps) => {
 						<div
 							tw="hidden md:(flex flex-col justify-between)"
 							css={[
-								// `@media (min-width: 768px) { width: 17.5625rem; height: 9.5rem; }`,
 								`@media (min-width: 768px) { height: 9.5rem; }`,
 								`@media (min-width: 1280px) { width: 21.875rem; height: 11rem; }`,
 							]}
 						>
 							{renderButtons(
-								`orange-100`,
+								slug.current,
 								setCardInfo,
 								planetOverview,
 								planetStructure,

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SerializedStyles } from '@emotion/utils';
 import tw, { styled, css, TwStyle } from 'twin.macro';
-import { Color } from '../../utils/color-utils';
+import {
+	backgroundColors,
+	Color,
+} from '../../utils/color-utils';
 
 // ===== STYLES =====
 
@@ -11,7 +14,6 @@ export interface ButtonProps {
 	number: string;
 	label: string;
 	activeColor: Color;
-	active: boolean;
 	onClick?: () => void;
 }
 
@@ -19,17 +21,19 @@ const Button = ({
 	number,
 	label,
 	activeColor,
-	active = false,
 	onClick,
 }: ButtonProps) => {
+	const [active, setActive] = useState(false);
+
 	const buttonStyles = [
 		tw`font-spartan font-bold uppercase`,
 		tw`bg-transparent`,
 		tw`border border-white/50`,
 		tw`hover:(bg-grey-800 border-transparent)`,
-		tw`focus:(border-none border-transparent)`,
+		tw`focus:(border-transparent)`,
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
+		active && backgroundColors[activeColor],
 		`width: 17.5625rem; height: 2.5rem`,
 		`@media (min-width: 1280px) { width: 21.875rem; height: 3rem; }`,
 	];
@@ -46,6 +50,8 @@ const Button = ({
 			css={[buttonStyles]}
 			tw="flex items-center content-center justify-start"
 			onClick={onClick}
+			onFocus={() => setActive(true)}
+			onBlur={() => setActive(false)}
 		>
 			<div css={[labelStyles]}>
 				<span tw="opacity-50">{number}</span>

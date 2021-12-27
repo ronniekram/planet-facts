@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import { navLinks } from './navigation';
 import { backgroundColors } from '../../utils/color-utils';
 import chevron from '../../assets/icon-chevron.svg';
-import './mobile.css';
 
 // STYLE
 
@@ -34,14 +33,13 @@ const renderMobileLinks = () => {
 	});
 };
 
-const MobileNav = (open: React.ComponentState) => {
+const MobileNav = () => {
 	return (
 		<div
 			tw="divide-y divide-grey-800/50 ml-5 mr-6"
 			css={[
 				`margin-top: 1.8125rem; margin-bottom: 4.125rem;`,
 			]}
-			className={open ? 'slideIn' : ''}
 		>
 			{renderMobileLinks()}
 		</div>

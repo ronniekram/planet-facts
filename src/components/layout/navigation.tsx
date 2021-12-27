@@ -5,6 +5,7 @@ import tw, { styled, css } from 'twin.macro';
 import MobileNav from './mobile-navigation';
 import burger from '../../assets/icon-hamburger.svg';
 import { Color } from '../../utils/color-utils';
+import './mobile.css';
 
 export type NavLink = {
 	name: string;
@@ -99,10 +100,13 @@ const Nav = () => {
 						{renderLinks()}
 					</div>
 				</div>
-				<div tw="absolute z-10 bg-blue-900 w-full md:(hidden)">
+				<div
+					tw="absolute z-10 bg-blue-900 w-full md:(hidden)"
+					className={open ? 'slideIn' : ''}
+				>
 					{open ? (
 						<div>
-							<MobileNav open={open} />
+							<MobileNav />
 						</div>
 					) : null}
 				</div>

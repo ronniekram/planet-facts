@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { useState, SetStateAction } from 'react';
 import Button from '../components/basic/button';
 import { SerializedStyles } from '@emotion/utils';
 import tw, { styled, css, TwStyle } from 'twin.macro';
@@ -15,19 +15,17 @@ type CardInfo = {
 export type ButtonLabel = {
 	number: string;
 	label: string;
-	active: boolean;
 };
 
 export type ButtonLabels = ButtonLabel[];
 
 export const buttonLabels: ButtonLabels = [
-	{ number: '01', label: 'Overview', active: false },
+	{ number: '01', label: 'Overview' },
 	{
 		number: '02',
 		label: 'Internal Structure',
-		active: false,
 	},
-	{ number: '03', label: 'Surface Geology', active: false },
+	{ number: '03', label: 'Surface Geology' },
 ];
 
 export const renderButtons = (
@@ -57,13 +55,13 @@ export const renderButtons = (
 			});
 		}
 	};
+
 	return buttonLabels.map(button => {
 		return (
 			<Button
 				number={button.number}
 				label={button.label}
 				activeColor={activeStyle}
-				active={button.active}
 				onClick={() => handleButtonClick(button)}
 			/>
 		);

@@ -73,6 +73,10 @@ module.exports = {
 			6: `2.264375rem`,
 			// 51.76px
 			7: `3.235rem`,
+			// 62.11px
+			8: `3.881875rem`,
+			// 103.52px
+			9: `6.47rem`,
 		},
 		letterSpacing: {
 			'extra-tight': `-1.5px`,

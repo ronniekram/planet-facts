@@ -2,6 +2,16 @@ import { GatsbyImageProps } from 'gatsby-plugin-image';
 import SmallCard, {
 	SmallCardProps,
 } from '../components/cards/small-card';
+import { Color } from './color-utils';
+
+export type PlanetImage = {
+	asset: { gatsbyImageData: GatsbyImageProps; url: string };
+};
+
+export type PlanetDetails = {
+	content: string;
+	source: string;
+};
 
 export interface PlanetProps {
 	data: {
@@ -13,7 +23,7 @@ export interface PlanetProps {
 			rotation: string;
 			temperature: string;
 			slug: {
-				current: string;
+				current: Color | string;
 			};
 			planetOverview: {
 				content: string;

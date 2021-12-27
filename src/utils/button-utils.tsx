@@ -27,36 +27,3 @@ export const buttonLabels: ButtonLabels = [
 	},
 	{ number: '03', label: 'Surface Geology' },
 ];
-
-export const renderButtons = (
-	activeStyle: Color,
-	planetOverview: CardInfo,
-	planetStructure: CardInfo,
-	planetGeology: CardInfo,
-	onClick: () => void
-) => {
-	return buttonLabels.map(button => {
-		return (
-			<Button
-				number={button.number}
-				label={button.label}
-				activeColor={activeStyle}
-			/>
-		);
-	});
-};
-
-const renderButton = (
-	button: ButtonLabel,
-	activeStyle: Color,
-	planetOverview: CardInfo,
-	planetStructure: CardInfo,
-	planetGeology: CardInfo,
-	onClick: () => void
-) => {
-	<Button
-		number={button.number}
-		label={button.label}
-		activeColor={activeStyle}
-	/>;
-};

@@ -58,4 +58,12 @@ export const textColors: {
 	'teal-100': [tw`text-teal-100`],
 	'gold-100': [tw`text-gold-100`],
 	'purple-100': [tw`text-purple-100`],
+	'mercury': [tw`text-mercury`],
+	'venus': [tw`text-venus`],
+	'earth': [tw`text-earth`],
+	'mars': [tw`text-mars`],
+	'jupiter': [tw`text-jupiter`],
+	'saturn': [tw`text-saturn`],
+	'uranus': [tw`text-uranus`],
+	'neptune': [tw`text-neptune`],
 };

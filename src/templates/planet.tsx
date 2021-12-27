@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
-import {
-	GatsbyImage,
-	GatsbyImageProps,
-} from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
 import Layout from '../components/layout';
@@ -18,20 +15,12 @@ import {
 import {
 	PlanetProps,
 	renderFacts,
+	PlanetDetails,
 } from '../utils/planet-utils';
 import { handleButtonClick } from '../utils/event-utils';
+import { textColors } from '../utils/color-utils';
 
 // ===== STYLES =====
-
-// TYPES
-export type PlanetImage = {
-	asset: { gatsbyImageData: GatsbyImageProps; url: string };
-};
-
-export type PlanetDetails = {
-	content: string;
-	source: string;
-};
 
 // ===== COMPONENTS =====
 const mobileLinks = ['Overview', 'Structure', 'Surface'];
@@ -122,7 +111,7 @@ const Planet = ({ data }: PlanetProps) => {
 			<Button
 				number={button.number}
 				label={button.label}
-				activeColor={slug}
+				activeColor={slug.current}
 				onClick={() => {
 					handleDeskButtonClick(
 						button,
@@ -141,10 +130,11 @@ const Planet = ({ data }: PlanetProps) => {
 			<Link
 				to="#"
 				css={[
-					tw`opacity-50 border-b-4 border-teal-100/0 hocus:(opacity-100)`,
+					textColors[slug.current],
+					tw`opacity-50 border-b-4 border-transparent hocus:(opacity-100)`,
 					tw`py-4`,
 					tw`text-4xs leading-2 tracking-looser`,
-					active && tw`border-b-4 border-teal-100`,
+					active && tw`border-b-4 border-current`,
 				]}
 				onClick={() => {
 					handleMobileButtonClick(
@@ -157,8 +147,7 @@ const Planet = ({ data }: PlanetProps) => {
 				onFocus={() => setActive(true)}
 				onBlur={() => setActive(false)}
 			>
-				{' '}
-				{link}{' '}
+				<span tw="text-white!">{link}</span>
 			</Link>
 		);
 	};

@@ -23,7 +23,7 @@ const h2Style = [
 ];
 
 // COMPONENTS
-interface SmallCardProps {
+export interface SmallCardProps {
 	title: string;
 	data: string;
 }

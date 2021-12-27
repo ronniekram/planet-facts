@@ -33,7 +33,7 @@ const Button = ({
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
 		`width: 17.5625rem; height: 2.5rem`,
-		`@media (min-width: 1280px) { width: 21.875rem; }`,
+		`@media (min-width: 1280px) { width: 21.875rem; height: 3rem; }`,
 	];
 
 	const labelStyles = [

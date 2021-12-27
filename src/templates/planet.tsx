@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 import tw, { styled, css } from 'twin.macro';
@@ -13,10 +13,44 @@ import {
 } from '../utils/planet-utils';
 
 // ===== STYLES =====
-
-// ===== TYPES =====
+let mobileLinkStyle = [
+	tw`opacity-50 hocus:(opacity-100)`,
+	tw`py-4`,
+	tw`text-4xs leading-2 tracking-looser`,
+	tw`border-b-4 border-teal-100/0`,
+	tw`border-transparent`,
+];
 
 // ===== COMPONENTS =====
+const mobileLinks = ['Overview', 'Structure', 'Surface'];
+const renderMobileLinks = () => {
+	return mobileLinks.map(link => (
+		<Link
+			to="#"
+			css={[mobileLinkStyle]}
+			onFocus={() => {
+				mobileLinkStyle = [
+					tw`opacity-50 hocus:(opacity-100)`,
+					tw`py-4`,
+					tw`text-4xs leading-2 tracking-looser`,
+					tw`border-b-4 border-teal-100`,
+				];
+			}}
+			onBlur={() => {
+				mobileLinkStyle = [
+					tw`opacity-50 hocus:(opacity-100)`,
+					tw`py-4`,
+					tw`text-4xs leading-2 tracking-looser`,
+					tw`border-b-4 border-teal-100/0`,
+					tw`border-transparent`,
+				];
+			}}
+		>
+			{' '}
+			{link}{' '}
+		</Link>
+	));
+};
 
 const Planet = ({ data }: PlanetProps) => {
 	const {
@@ -52,17 +86,27 @@ const Planet = ({ data }: PlanetProps) => {
 		image.asset.gatsbyImageData
 	);
 
-	console.log(data.planet);
 	return (
 		<Layout>
-			<div tw="min-w-full min-h-screen m-auto">
+			<div tw="border-b border-grey-800/70 text-4xs font-spartan font-bold uppercase flex justify-between px-6 md:(hidden)">
+				{renderMobileLinks()}
+			</div>
+			<div
+				tw="mx-auto xl:(pb-14)"
+				css={[
+					`@media (min-width: 768px) { margin-top: 3.125rem; }`,
+					`@media (min-width: 1280px) { margin-top: 7.875rem; }`,
+				]}
+			>
 				<div
-					tw="xl:(flex justify-between mx-auto)"
+					tw="mx-auto xl:(flex justify-between)"
 					css={[
+						`width: 20.4375rem;`,
+						`@media (min-width: 768px) { width: 43.0625rem; }`,
 						`@media (min-width: 1280px) { width: 69.375rem; }`,
 					]}
 				>
-					<div tw="flex justify-center py-24 md:(py-28)">
+					<div tw="flex justify-center py-20 md:(py-28) xl:(w-10/12)">
 						<div
 							css={[
 								`width: 6.9375rem; height: 6.9375rem;`,
@@ -74,9 +118,9 @@ const Planet = ({ data }: PlanetProps) => {
 						</div>
 					</div>
 					<div
-						tw="flex justify-center items-center content-center mx-auto mb-7 md:(justify-between) xl:(flex-col mx-0)"
+						tw="flex flex-col items-center content-center mx-auto mb-7 md:(flex-row w-full justify-between) xl:(flex-col mx-0)"
 						css={[
-							`@media (min-width: 768px) { width: 43.0625rem; height: 15.8125rem; }`,
+							`@media (min-width: 768px) { height: 15.8125rem; }`,
 							`@media (min-width: 1280px) { width: 21.875rem;  height: 33.8125rem; }`,
 						]}
 					>
@@ -88,7 +132,8 @@ const Planet = ({ data }: PlanetProps) => {
 						<div
 							tw="hidden md:(flex flex-col justify-between)"
 							css={[
-								`@media (min-width: 768px) { width: 17.5625rem; height: 9.5rem; }`,
+								// `@media (min-width: 768px) { width: 17.5625rem; height: 9.5rem; }`,
+								`@media (min-width: 768px) { height: 9.5rem; }`,
 								`@media (min-width: 1280px) { width: 21.875rem; height: 11rem; }`,
 							]}
 						>
@@ -139,17 +184,17 @@ export const query = graphql`
 			}
 			image {
 				asset {
-					gatsbyImageData
+					gatsbyImageData(placeholder: BLURRED)
 				}
 			}
 			internalImage {
 				asset {
-					gatsbyImageData
+					gatsbyImageData(placeholder: BLURRED)
 				}
 			}
 			geologyImage {
 				asset {
-					gatsbyImageData
+					gatsbyImageData(placeholder: BLURRED)
 				}
 			}
 		}

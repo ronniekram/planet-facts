@@ -1,7 +1,8 @@
 import * as React from 'react';
+import 'twin.macro';
 import tw, { GlobalStyles, css } from 'twin.macro';
+import Nav from './layout/navigation';
 import '../assets/fonts/fonts.css';
-import stars from '../assets/background-stars.svg';
 
 const Layout = ({
 	children,
@@ -9,11 +10,8 @@ const Layout = ({
 }: {
 	children: React.ReactNode;
 }): JSX.Element => (
-	<div
-		{...rest}
-		tw="antialiased text-white bg-blue-900 w-screen h-screen"
-		css={[`background-image: url(${stars});`]}
-	>
+	<div {...rest} tw="antialiased text-white">
+		<Nav />
 		<GlobalStyles />
 		{children}
 	</div>

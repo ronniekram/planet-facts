@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SerializedStyles } from '@emotion/utils';
 import tw, { styled, css, TwStyle } from 'twin.macro';
 import { Color } from '../../utils/color-utils';
@@ -13,6 +13,7 @@ export interface ButtonProps {
 	activeColor: Color;
 	active: boolean;
 	onClick?: () => void;
+	setCardInfo?: () => void;
 }
 
 const Button = ({
@@ -21,9 +22,8 @@ const Button = ({
 	activeColor,
 	active = false,
 	onClick,
+	setCardInfo,
 }: ButtonProps) => {
-	const [isActive, setIsActive] = useState<boolean>(active);
-
 	const buttonStyles = [
 		tw`font-spartan font-bold uppercase`,
 		tw`bg-transparent`,
@@ -47,7 +47,7 @@ const Button = ({
 			type="button"
 			css={[buttonStyles]}
 			tw="flex items-center content-center justify-start"
-			onClick={() => setIsActive(!active)}
+			onClick={onClick}
 		>
 			<div css={[labelStyles]}>
 				<span tw="opacity-50">{number}</span>

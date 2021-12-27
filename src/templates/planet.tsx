@@ -47,7 +47,6 @@ const Planet = ({ data }: PlanetProps) => {
 	];
 
 	const [cardInfo, setCardInfo] = useState({
-		name: name,
 		content: planetOverview.content,
 		source: planetOverview.source,
 	});
@@ -59,21 +58,18 @@ const Planet = ({ data }: PlanetProps) => {
 	const handleMobileClick = (link: string) => {
 		if (link === 'Overview') {
 			setCardInfo({
-				name: name,
 				content: planetOverview.content,
 				source: planetOverview.source,
 			});
 		}
 		if (link === 'Structure') {
 			setCardInfo({
-				name: name,
 				content: planetStructure.content,
 				source: planetStructure.source,
 			});
 		}
 		if (link === `Surface`) {
 			setCardInfo({
-				name: name,
 				content: planetGeology.content,
 				source: planetGeology.source,
 			});
@@ -132,7 +128,7 @@ const Planet = ({ data }: PlanetProps) => {
 						]}
 					>
 						<InfoCard
-							name={cardInfo.name}
+							name={name}
 							content={cardInfo.content}
 							source={cardInfo.source}
 						/>
@@ -144,7 +140,13 @@ const Planet = ({ data }: PlanetProps) => {
 								`@media (min-width: 1280px) { width: 21.875rem; height: 11rem; }`,
 							]}
 						>
-							{renderButtons(`orange-100`)}
+							{renderButtons(
+								`orange-100`,
+								setCardInfo,
+								planetOverview,
+								planetStructure,
+								planetGeology
+							)}
 						</div>
 					</div>
 				</div>

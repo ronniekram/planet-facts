@@ -20,16 +20,34 @@ module.exports = {
 			'purple-100': `#6f2ed6`,
 		},
 		fontSize: {
-			// medium
-			'h1': `5rem`,
-			'h2': `2.5rem`,
-			// bold
-			'h3': `1.5625rem`,
-			'h4': `0.6875rem`,
-			'button-large': `0.75rem`,
-			'button-small': `0.5625rem`,
-			// regular
-			'body': `0.875rem`,
+			// 8px
+			'5xs': `0.5rem`,
+			// 9px
+			'4xs': `0.5625rem`,
+			// 11px
+			'3xs': `0.6875rem`,
+			// 12px
+			'2xs': `0.75rem`,
+			// 14px
+			'xs': `0.875rem`,
+			// 15px
+			'sm': `0.9375rem`,
+			// 16px
+			'base': `1rem`,
+			// 20px
+			'lg': `1.25rem`,
+			// 24px
+			'xl': `1.5rem`,
+			// 25px
+			'2xl': `1.5625rem`,
+			// 28px
+			'3xl': `1.75rem`,
+			// 40px
+			'4xl': `2.5rem`,
+			// 48px
+			'5xl': `3rem`,
+			// 80px
+			'6xl': `5rem`,
 		},
 		fontWeight: {
 			regular: 400,
@@ -41,20 +59,30 @@ module.exports = {
 			spartan: [`Spartan`, `sans-serif`],
 		},
 		lineHeight: {
-			'h1': `6.4375rem`,
-			'h2': `3.25rem`,
-			'h3': `1.5625rem`,
-			'h4': `1.5625rem`,
-			'body': `1.5625rem`,
-			'button-large': `1.5625rem`,
-			'button-small': `1.5625rem`,
+			// 10.08px
+			'leading-1': `0.63rem`,
+			// 16px
+			'leading-2': `1rem`,
+			// 22px
+			'leading-3': `1.375rem`,
+			// 25px
+			'leading-4': `1.5625rem`,
+			// 26px
+			'leading-5': `1.625rem`,
+			// 36.23px
+			'leading-6': `2.264375rem`,
+			// 51.76px
+			'leading-7': `3.235rem`,
 		},
 		letterSpacing: {
-			'h2': `-1.5px`,
-			'h3': `2.6px`,
-			'h4': `1px`,
-			'button-large': `2.6px`,
-			'button-small': `1.93px`,
+			'extra-tight': `-1.5px`,
+			'tighest': `-1.05px`,
+			'tighter': `-0.9px`,
+			'tight': `-0.75px`,
+			'normal': `1px`,
+			'loose': `0.73px`,
+			'looser': `1.93px`,
+			'loosest': `2.57px`,
 		},
 	},
 };

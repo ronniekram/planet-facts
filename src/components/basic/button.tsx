@@ -54,16 +54,14 @@ const Button = ({
 		tw`border border-white/50`,
 		tw`hover:(bg-grey-800)`,
 		tw`focus:(border-none)`,
-		size === `TABLET` &&
-			tw`text-button-small leading-button-small tracking-button-small`,
-		size === `DESKTOP` &&
-			tw`text-button-large leading-button-large tracking-button-large`,
-		buttonSizes[size],
+		tw`text-4xs leading-4 tracking-looser`,
+		tw`xl:(text-2xs tracking-loosest)`,
 	];
 
 	const labelStyles = [
 		tw`flex items-center content-center justify-around`,
 		tw`font-bold`,
+		tw`px-5 xl:(px-7)`,
 		size === `TABLET` && tw`ml-5`,
 		size === `DESKTOP` && tw`ml-7`,
 	];

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SerializedStyles } from '@emotion/utils';
-import tw, { styled, css, TwStyle } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 import {
 	backgroundColors,
 	Color,

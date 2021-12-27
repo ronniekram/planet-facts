@@ -1,7 +1,6 @@
-import React, { useState, SetStateAction } from 'react';
+import React, { SetStateAction } from 'react';
 import Button from '../components/basic/button';
-import { SerializedStyles } from '@emotion/utils';
-import tw, { styled, css, TwStyle } from 'twin.macro';
+import tw, { styled, css } from 'twin.macro';
 import { Color } from './color-utils';
 
 // TYPES

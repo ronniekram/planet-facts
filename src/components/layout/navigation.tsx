@@ -1,7 +1,7 @@
-import React, { Dispatch, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import 'twin.macro';
-import tw, { styled, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 import MobileNav from './mobile-navigation';
 import burger from '../../assets/icon-hamburger.svg';
 import { Color } from '../../utils/color-utils';

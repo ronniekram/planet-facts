@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
-import tw, { styled, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 import Layout from '../components/layout';
 import Nav from '../components/layout/navigation';
 import InfoCard from '../components/cards/info-card';
@@ -14,13 +14,6 @@ import {
 } from '../utils/planet-utils';
 
 // ===== STYLES =====
-let mobileLinkStyle = [
-	tw`opacity-50 hocus:(opacity-100)`,
-	tw`py-4`,
-	tw`text-4xs leading-2 tracking-looser`,
-	tw`border-b-4 border-teal-100/0`,
-	tw`border-transparent`,
-];
 
 // ===== COMPONENTS =====
 const mobileLinks = ['Overview', 'Structure', 'Surface'];
@@ -78,24 +71,33 @@ const Planet = ({ data }: PlanetProps) => {
 		}
 	};
 
-	const renderMobileLinks = () => {
-		return mobileLinks.map(link => (
+	const renderMobileLink = (link: string) => {
+		const [active, setActive] = useState(false);
+
+		return (
 			<Link
 				to="#"
-				css={[mobileLinkStyle]}
+				css={[
+					tw`opacity-50 border-b-4 border-teal-100/0 hocus:(opacity-100)`,
+					tw`py-4`,
+					tw`text-4xs leading-2 tracking-looser`,
+					active && tw`border-b-4 border-teal-100`,
+				]}
 				onClick={() => handleMobileClick(link)}
+				onFocus={() => setActive(true)}
+				onBlur={() => setActive(false)}
 			>
 				{' '}
 				{link}{' '}
 			</Link>
-		));
+		);
 	};
 
 	return (
 		<Layout>
 			<Nav />
 			<div tw="border-b border-grey-800/70 text-4xs font-spartan font-bold uppercase flex justify-between px-6 md:(hidden)">
-				{renderMobileLinks()}
+				{mobileLinks.map(link => renderMobileLink(link))}
 			</div>
 			<div
 				tw="mx-auto xl:(pb-14)"

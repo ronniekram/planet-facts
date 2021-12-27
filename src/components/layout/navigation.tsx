@@ -74,10 +74,7 @@ const Nav = () => {
 
 	return (
 		<>
-			<nav
-				tw="relative"
-				// tw="border-b border-grey-800/70 flex justify-between items-center content-center md:(flex-col) xl:(flex-row)"
-			>
+			<nav tw="relative">
 				<div tw="border-b border-grey-800/70 flex justify-between items-center content-center md:(flex-col) xl:(flex-row)">
 					<div tw="font-antonio uppercase text-3xl tracking-tighest leading-6 ml-6 py-3.5 md:(pt-8 pb-0 ml-0) xl:(text-2xl py-6 ml-8)">
 						The Planets
@@ -86,7 +83,9 @@ const Nav = () => {
 					<button
 						type="button"
 						css={[buttonStyle]}
-						onClick={() => setOpen(!open)}
+						onClick={() => {
+							setOpen(!open);
+						}}
 					>
 						<img
 							src={burger}
@@ -101,7 +100,11 @@ const Nav = () => {
 					</div>
 				</div>
 				<div tw="absolute z-10 bg-blue-900 w-full md:(hidden)">
-					{open ? <MobileNav /> : null}
+					{open ? (
+						<div>
+							<MobileNav open={open} />
+						</div>
+					) : null}
 				</div>
 			</nav>
 		</>

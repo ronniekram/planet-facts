@@ -18,6 +18,14 @@ module.exports = {
 			'teal-100': `#1ec2a4`,
 			'gold-100': `#EDA249`,
 			'purple-100': `#6f2ed6`,
+			'mercury': `#DEF4FC`,
+			'venus': `#F7CC7F`,
+			'earth': `#545BFE`,
+			'mars': `#FF6A45`,
+			'jupiter': `#ECAD7A`,
+			'saturn': `#FCCB6B`,
+			'uranus': `#65F0D5`,
+			'neptune': `#497EFA`,
 		},
 		fontSize: {
 			// 8px
@@ -85,6 +93,7 @@ module.exports = {
 			'tight': `-0.75px`,
 			'normal': `1px`,
 			'loose': `0.73px`,
+			'loosey': `1.36px`,
 			'looser': `1.93px`,
 			'loosest': `2.57px`,
 		},

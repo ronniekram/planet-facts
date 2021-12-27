@@ -13,7 +13,6 @@ export interface ButtonProps {
 	activeColor: Color;
 	active: boolean;
 	onClick?: () => void;
-	setCardInfo?: () => void;
 }
 
 const Button = ({
@@ -22,14 +21,13 @@ const Button = ({
 	activeColor,
 	active = false,
 	onClick,
-	setCardInfo,
 }: ButtonProps) => {
 	const buttonStyles = [
 		tw`font-spartan font-bold uppercase`,
 		tw`bg-transparent`,
 		tw`border border-white/50`,
-		tw`hover:(bg-grey-800)`,
-		tw`focus:(border-none)`,
+		tw`hover:(bg-grey-800 border-transparent)`,
+		tw`focus:(border-none border-transparent)`,
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
 		`width: 17.5625rem; height: 2.5rem`,

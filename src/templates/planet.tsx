@@ -4,8 +4,9 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 import tw, { styled, css } from 'twin.macro';
 import Layout from '../components/layout';
-import { SmallCardProps } from '../components/cards/small-card';
+import Nav from '../components/layout/navigation';
 import InfoCard from '../components/cards/info-card';
+import { SmallCardProps } from '../components/cards/small-card';
 import { renderButtons } from '../utils/button-utils';
 import {
 	PlanetProps,
@@ -89,8 +90,10 @@ const Planet = ({ data }: PlanetProps) => {
 		));
 	};
 
+	console.log(open);
 	return (
 		<Layout>
+			<Nav />
 			<div tw="border-b border-grey-800/70 text-4xs font-spartan font-bold uppercase flex justify-between px-6 md:(hidden)">
 				{renderMobileLinks()}
 			</div>

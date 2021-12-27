@@ -12,6 +12,7 @@ import {
 	PlanetProps,
 	renderFacts,
 } from '../utils/planet-utils';
+import { handleMobileClick } from '../utils/event-utils';
 
 // ===== STYLES =====
 
@@ -50,25 +51,23 @@ const Planet = ({ data }: PlanetProps) => {
 		image.asset.gatsbyImageData
 	);
 
-	const handleMobileClick = (link: string) => {
-		if (link === 'Overview') {
-			setCardInfo({
-				content: planetOverview.content,
-				source: planetOverview.source,
-			});
-		}
-		if (link === 'Structure') {
-			setCardInfo({
-				content: planetStructure.content,
-				source: planetStructure.source,
-			});
-		}
-		if (link === `Surface`) {
-			setCardInfo({
-				content: planetGeology.content,
-				source: planetGeology.source,
-			});
-		}
+	const handleMobileButtonClick = (
+		link: string,
+		planetOverview: { content: string; source: string },
+		planetStructure: { content: string; source: string },
+		planetGeology: { content: string; source: string }
+	) => {
+		const info = handleMobileClick(
+			link,
+			planetOverview,
+			planetStructure,
+			planetGeology
+		);
+
+		setCardInfo({
+			content: info?.content,
+			source: info?.source,
+		});
 	};
 
 	const renderMobileLink = (link: string) => {
@@ -83,7 +82,14 @@ const Planet = ({ data }: PlanetProps) => {
 					tw`text-4xs leading-2 tracking-looser`,
 					active && tw`border-b-4 border-teal-100`,
 				]}
-				onClick={() => handleMobileClick(link)}
+				onClick={() =>
+					handleMobileButtonClick(
+						link,
+						planetOverview,
+						planetStructure,
+						planetGeology
+					)
+				}
 				onFocus={() => setActive(true)}
 				onBlur={() => setActive(false)}
 			>

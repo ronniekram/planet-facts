@@ -19,11 +19,11 @@ export interface PlanetProps {
 				content: string;
 				source: string;
 			};
-			structureOverview: {
+			planetStructure: {
 				content: string;
 				source: string;
 			};
-			geologyOverview: {
+			planetGeology: {
 				content: string;
 				source: string;
 			};

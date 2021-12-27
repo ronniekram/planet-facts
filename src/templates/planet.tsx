@@ -23,47 +23,17 @@ let mobileLinkStyle = [
 
 // ===== COMPONENTS =====
 const mobileLinks = ['Overview', 'Structure', 'Surface'];
-const renderMobileLinks = () => {
-	return mobileLinks.map(link => (
-		<Link
-			to="#"
-			css={[mobileLinkStyle]}
-			onFocus={() => {
-				mobileLinkStyle = [
-					tw`opacity-50 hocus:(opacity-100)`,
-					tw`py-4`,
-					tw`text-4xs leading-2 tracking-looser`,
-					tw`border-b-4 border-teal-100`,
-				];
-			}}
-			onBlur={() => {
-				mobileLinkStyle = [
-					tw`opacity-50 hocus:(opacity-100)`,
-					tw`py-4`,
-					tw`text-4xs leading-2 tracking-looser`,
-					tw`border-b-4 border-teal-100/0`,
-					tw`border-transparent`,
-				];
-			}}
-		>
-			{' '}
-			{link}{' '}
-		</Link>
-	));
-};
 
 const Planet = ({ data }: PlanetProps) => {
 	const {
-		id,
 		name,
 		radius,
 		revolution,
 		rotation,
 		temperature,
-		slug,
 		planetOverview,
-		structureOverview,
-		geologyOverview,
+		planetStructure,
+		planetGeology,
 		image,
 		internalImage,
 		geologyImage,
@@ -85,6 +55,43 @@ const Planet = ({ data }: PlanetProps) => {
 	const [showImage, setShowImage] = useState(
 		image.asset.gatsbyImageData
 	);
+
+	const handleMobileClick = (link: string) => {
+		if (link === 'Overview') {
+			setCardInfo({
+				name: name,
+				content: planetOverview.content,
+				source: planetOverview.source,
+			});
+		}
+		if (link === 'Structure') {
+			setCardInfo({
+				name: name,
+				content: planetStructure.content,
+				source: planetStructure.source,
+			});
+		}
+		if (link === `Surface`) {
+			setCardInfo({
+				name: name,
+				content: planetGeology.content,
+				source: planetGeology.source,
+			});
+		}
+	};
+
+	const renderMobileLinks = () => {
+		return mobileLinks.map(link => (
+			<Link
+				to="#"
+				css={[mobileLinkStyle]}
+				onClick={() => handleMobileClick(link)}
+			>
+				{' '}
+				{link}{' '}
+			</Link>
+		));
+	};
 
 	return (
 		<Layout>

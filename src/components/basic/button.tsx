@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { SerializedStyles } from '@emotion/utils';
 import tw, { styled, css, TwStyle } from 'twin.macro';
-import {
-	backgroundColors,
-	Color,
-} from '../../utils/color-utils';
+import { Color } from '../../utils/color-utils';
 
 // ===== STYLES =====
 
@@ -52,12 +49,11 @@ const Button = ({
 	const [isActive, setIsActive] = useState<boolean>(active);
 
 	const buttonStyles = [
-		tw`font-antonio font-bold uppercase`,
+		tw`font-spartan font-bold uppercase`,
 		tw`bg-transparent`,
 		tw`border border-white/50`,
-		tw`hocus:(bg-grey-800)`,
-		active && backgroundColors[activeColor],
-		active && tw`border-none`,
+		tw`hover:(bg-grey-800)`,
+		tw`focus:(border-none)`,
 		size === `TABLET` &&
 			tw`text-button-small leading-button-small tracking-button-small`,
 		size === `DESKTOP` &&
@@ -66,7 +62,7 @@ const Button = ({
 	];
 
 	const labelStyles = [
-		tw`flex items-center content-center justify-between`,
+		tw`flex items-center content-center justify-around`,
 		tw`font-bold`,
 		size === `TABLET` && tw`ml-5`,
 		size === `DESKTOP` && tw`ml-7`,
@@ -79,9 +75,9 @@ const Button = ({
 			tw="flex items-center content-center justify-start"
 			onClick={() => setIsActive(!active)}
 		>
-			<div css={[`width: 7.0625rem;`, labelStyles]}>
+			<div css={[labelStyles]}>
 				<span tw="opacity-50">{number}</span>
-				<span>{label}</span>
+				<span tw="px-7">{label}</span>
 			</div>
 		</button>
 	);

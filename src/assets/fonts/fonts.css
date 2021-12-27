@@ -28,3 +28,12 @@ body {
 	font-weight: 400;
 	font-style: normal;
 }
+
+/* SPARTAN: REGULAR */
+
+@font-face {
+	font-family: 'Spartan';
+	src: url('../fonts/spartan/Spartan-Bold.ttf');
+	font-weight: 700;
+	font-style: normal;
+}

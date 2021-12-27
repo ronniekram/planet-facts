@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import tw, { styled, css } from 'twin.macro';
 import Layout from '../components/layout';
-import Button from '../components/basic/button';
+import SmallCard from '../components/basic/small-card';
+import { renderButtons } from '../utils/button-utils';
 import { PlanetProps } from '../utils/planet-utils';
 
+// ===== STYLES =====
+
+// ===== TYPES =====
+
+// ===== COMPONENTS =====
+
 const Planet = ({ data }: PlanetProps) => {
-	console.log(data);
 	const {
 		id,
 		name,
@@ -25,15 +31,9 @@ const Planet = ({ data }: PlanetProps) => {
 
 	return (
 		<Layout>
-			<div tw="w-screen h-screen flex justify-center items-center content-center">
-				<h1>{name}</h1>
-				<Button
-					number="01"
-					label="Overview"
-					activeColor="purple-100"
-					size="DESKTOP"
-					active={false}
-				/>
+			<div tw="min-w-full min-h-screen m-auto">
+				<SmallCard title="Radius" data={radius} />
+				{renderButtons(`gold-100`)}
 			</div>
 		</Layout>
 	);

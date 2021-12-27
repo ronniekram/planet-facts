@@ -11,13 +11,14 @@ const smallCardStyle = [
 ];
 
 const h4Style = [
-	tw`font-bold font-spartan opacity-50 text-5xs leading-2 tracking-loose`,
-	tw`xl:(text-3xs leading-4 tracking-normal)`,
+	tw`font-bold font-spartan opacity-50 text-5xs`,
+	tw`md:(leading-5 tracking-loose)`,
+	tw`xl:(text-3xs leading-4 tracking-normal text-left)`,
 ];
 
 const h2Style = [
-	tw`font-medium font-antonio text-lg leading-5 tracking-tight`,
-	tw`md:(tracking-tigher leading-6 text-xl)`,
+	tw`font-medium font-antonio text-lg`,
+	tw`md:(tracking-tighter leading-6 text-xl text-left)`,
 	tw`xl:(text-4xl leading-7 tracking-extra-tight)`,
 ];
 
@@ -33,7 +34,7 @@ const SmallCard = ({ title, data }: SmallCardProps) => {
 			tw="flex uppercase border border-white/50"
 			css={[smallCardStyle]}
 		>
-			<div tw="flex md:(flex-col) self-center ml-6">
+			<div tw="w-full flex items-center content-center justify-between mx-6 md:(self-center block)">
 				<h4 css={[h4Style]}>{title}</h4>
 				<h2 css={[h2Style]}>{data}</h2>
 			</div>

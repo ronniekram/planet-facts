@@ -3,28 +3,6 @@ import { SerializedStyles } from '@emotion/utils';
 import tw, { styled, css, TwStyle } from 'twin.macro';
 import { Color } from './color-utils';
 
-// SIZES
-export const buttonSize = [`TABLET`, `DESKTOP`];
-
-export type Size = typeof buttonSize[number];
-
-export const buttonSizes: {
-	[key in Size]: (TwStyle | SerializedStyles)[];
-} = {
-	TABLET: [
-		css`
-			width: 17.5625rem;
-			height: 2.5rem;
-		`,
-	],
-	DESKTOP: [
-		css`
-			width: 21.875rem;
-			height: 2.5rem;
-		`,
-	],
-};
-
 // PLANET PAGE LABELS
 export type ButtonLabel = {
 	number: string;
@@ -51,7 +29,6 @@ export const renderButtons = (activeStyle: Color) => {
 				number={button.number}
 				label={button.label}
 				activeColor={activeStyle}
-				size="DESKTOP"
 				active={button.active}
 			/>
 		);

@@ -60,19 +60,19 @@ module.exports = {
 		},
 		lineHeight: {
 			// 10.08px
-			'leading-1': `0.63rem`,
+			1: `0.63rem`,
 			// 16px
-			'leading-2': `1rem`,
+			2: `1rem`,
 			// 22px
-			'leading-3': `1.375rem`,
+			3: `1.375rem`,
 			// 25px
-			'leading-4': `1.5625rem`,
+			4: `1.5625rem`,
 			// 26px
-			'leading-5': `1.625rem`,
+			5: `1.625rem`,
 			// 36.23px
-			'leading-6': `2.264375rem`,
+			6: `2.264375rem`,
 			// 51.76px
-			'leading-7': `3.235rem`,
+			7: `3.235rem`,
 		},
 		letterSpacing: {
 			'extra-tight': `-1.5px`,

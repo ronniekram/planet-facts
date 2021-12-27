@@ -5,8 +5,8 @@ body {
 /* ANTONIO: MEDIUM */
 
 @font-face {
-	font-family: "Antonio";
-	src: url("../fonts/antonio/Antonio-Medium.ttf");
+	font-family: 'Antonio';
+	src: url('../fonts/antonio/Antonio-Medium.ttf');
 	font-weight: 500;
 	font-style: normal;
 }
@@ -14,17 +14,17 @@ body {
 /* ANTONIO: BOLD */
 
 @font-face {
-	font-family: "Antonio";
-	src: url("../fonts/antonio/Antonio-Bold.ttf");
-	font-weight: 500;
+	font-family: 'Antonio';
+	src: url('../fonts/antonio/Antonio-Bold.ttf');
+	font-weight: 700;
 	font-style: normal;
 }
 
 /* SPARTAN: REGULAR */
 
 @font-face {
-	font-family: "Spartan";
-	src: url("../fonts/spartan/Spartan-Regular.ttf");
+	font-family: 'Spartan';
+	src: url('../fonts/spartan/Spartan-Regular.ttf');
 	font-weight: 400;
 	font-style: normal;
 }

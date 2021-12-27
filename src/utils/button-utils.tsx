@@ -2,6 +2,7 @@ import React, { SetStateAction } from 'react';
 import Button from '../components/basic/button';
 import tw, { styled, css } from 'twin.macro';
 import { Color } from './color-utils';
+import { handleButtonClick } from './event-utils';
 
 // TYPES
 // FOR OVERVIEW, STRUCTURE & GEOLOGY
@@ -29,40 +30,33 @@ export const buttonLabels: ButtonLabels = [
 
 export const renderButtons = (
 	activeStyle: Color,
-	setCardInfo: (arg0: CardInfo) => SetStateAction<CardInfo>,
 	planetOverview: CardInfo,
 	planetStructure: CardInfo,
-	planetGeology: CardInfo
+	planetGeology: CardInfo,
+	onClick: () => void
 ) => {
-	const handleButtonClick = (button: ButtonLabel) => {
-		if (button.label === 'Overview') {
-			setCardInfo({
-				content: planetOverview.content,
-				source: planetOverview.source,
-			});
-		}
-		if (button.label === 'Internal Structure') {
-			setCardInfo({
-				content: planetStructure.content,
-				source: planetStructure.source,
-			});
-		}
-		if (button.label === 'Surface Geology') {
-			setCardInfo({
-				content: planetGeology.content,
-				source: planetGeology.source,
-			});
-		}
-	};
-
 	return buttonLabels.map(button => {
 		return (
 			<Button
 				number={button.number}
 				label={button.label}
 				activeColor={activeStyle}
-				onClick={() => handleButtonClick(button)}
 			/>
 		);
 	});
+};
+
+const renderButton = (
+	button: ButtonLabel,
+	activeStyle: Color,
+	planetOverview: CardInfo,
+	planetStructure: CardInfo,
+	planetGeology: CardInfo,
+	onClick: () => void
+) => {
+	<Button
+		number={button.number}
+		label={button.label}
+		activeColor={activeStyle}
+	/>;
 };

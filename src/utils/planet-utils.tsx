@@ -30,16 +30,19 @@ export interface PlanetProps {
 			image: {
 				asset: {
 					gatsbyImageData: GatsbyImageProps;
+					url: string;
 				};
 			};
 			internalImage: {
 				asset: {
 					gatsbyImageData: GatsbyImageProps;
+					url: string;
 				};
 			};
 			geologyImage: {
 				asset: {
 					gatsbyImageData: GatsbyImageProps;
+					url: string;
 				};
 			};
 		};

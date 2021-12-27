@@ -1,27 +1,53 @@
 import React, { useState } from 'react';
+import { PlanetDetails } from '../templates/planet';
+import { ButtonLabel } from './button-utils';
 
-export const handleMobileClick = (
-	link: string,
-	planetOverview: { content: string; source: string },
-	planetStructure: { content: string; source: string },
-	planetGeology: { content: string; source: string }
-) => {
-	if (link === 'Overview') {
+export interface ClickProps {
+	link?: string;
+	button?: ButtonLabel;
+	planetOverview: PlanetDetails;
+	planetStructure: PlanetDetails;
+	planetGeology: PlanetDetails;
+}
+
+export const handleButtonClick = ({
+	button,
+	link,
+	planetOverview,
+	planetStructure,
+	planetGeology,
+}: ClickProps) => {
+	if (
+		(button &&
+			button.label.toLowerCase().includes('overview')) ||
+		(link && link.toLowerCase().includes('overview'))
+	) {
 		return {
 			content: planetOverview.content,
 			source: planetOverview.source,
+			planetImage: 'overview',
 		};
 	}
-	if (link === 'Structure') {
+	if (
+		(button &&
+			button.label.toLowerCase().includes('structure')) ||
+		(link && link.toLowerCase().includes('structure'))
+	) {
 		return {
 			content: planetStructure.content,
 			source: planetStructure.source,
+			planetImage: 'structure',
 		};
 	}
-	if (link === `Surface`) {
+	if (
+		(button &&
+			button.label.toLowerCase().includes('surface')) ||
+		(link && link.toLowerCase().includes('surface'))
+	) {
 		return {
 			content: planetGeology.content,
 			source: planetGeology.source,
+			planetImage: 'geology',
 		};
 	}
 };

@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import {
+	GatsbyImage,
+	GatsbyImageProps,
+} from 'gatsby-plugin-image';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
 import Layout from '../components/layout';
 import Nav from '../components/layout/navigation';
 import InfoCard from '../components/cards/info-card';
+import Button from '../components/basic/button';
 import { SmallCardProps } from '../components/cards/small-card';
-import { renderButtons } from '../utils/button-utils';
+import {
+	ButtonLabel,
+	buttonLabels,
+} from '../utils/button-utils';
 import {
 	PlanetProps,
 	renderFacts,
 } from '../utils/planet-utils';
-import { handleMobileClick } from '../utils/event-utils';
+import { handleButtonClick } from '../utils/event-utils';
 
 // ===== STYLES =====
+
+// TYPES
+export type PlanetImage = {
+	asset: { gatsbyImageData: GatsbyImageProps; url: string };
+};
+
+export type PlanetDetails = {
+	content: string;
+	source: string;
+};
 
 // ===== COMPONENTS =====
 const mobileLinks = ['Overview', 'Structure', 'Surface'];
@@ -51,28 +68,75 @@ const Planet = ({ data }: PlanetProps) => {
 		image.asset.gatsbyImageData
 	);
 
-	const handleMobileButtonClick = (
-		link: string,
-		planetOverview: { content: string; source: string },
-		planetStructure: { content: string; source: string },
-		planetGeology: { content: string; source: string }
-	) => {
-		const info = handleMobileClick(
-			link,
-			planetOverview,
-			planetStructure,
-			planetGeology
-		);
-
+	const setCardState = info => {
 		setCardInfo({
 			content: info?.content,
 			source: info?.source,
 		});
+
+		if (info?.planetImage === 'overview') {
+			setShowImage(image.asset.gatsbyImageData);
+		}
+		if (info?.planetImage === 'structure') {
+			setShowImage(internalImage.asset.gatsbyImageData);
+		}
+		if (info?.planetImage === 'geology') {
+			setShowImage(geologyImage.asset.gatsbyImageData);
+		}
+	};
+
+	const handleMobileButtonClick = (
+		link: string,
+		planetOverview: PlanetDetails,
+		planetStructure: PlanetDetails,
+		planetGeology: PlanetDetails
+	) => {
+		const info = handleButtonClick({
+			link,
+			planetOverview,
+			planetStructure,
+			planetGeology,
+		});
+
+		setCardState(info);
+	};
+
+	const handleDeskButtonClick = (
+		button: ButtonLabel,
+		planetOverview: PlanetDetails,
+		planetStructure: PlanetDetails,
+		planetGeology: PlanetDetails
+	) => {
+		const info = handleButtonClick({
+			button,
+			planetOverview,
+			planetStructure,
+			planetGeology,
+		});
+
+		setCardState(info);
+	};
+
+	const renderButton = (button: ButtonLabel) => {
+		return (
+			<Button
+				number={button.number}
+				label={button.label}
+				activeColor={slug}
+				onClick={() => {
+					handleDeskButtonClick(
+						button,
+						planetOverview,
+						planetStructure,
+						planetGeology
+					);
+				}}
+			/>
+		);
 	};
 
 	const renderMobileLink = (link: string) => {
 		const [active, setActive] = useState(false);
-
 		return (
 			<Link
 				to="#"
@@ -82,14 +146,14 @@ const Planet = ({ data }: PlanetProps) => {
 					tw`text-4xs leading-2 tracking-looser`,
 					active && tw`border-b-4 border-teal-100`,
 				]}
-				onClick={() =>
+				onClick={() => {
 					handleMobileButtonClick(
 						link,
 						planetOverview,
 						planetStructure,
 						planetGeology
-					)
-				}
+					);
+				}}
 				onFocus={() => setActive(true)}
 				onBlur={() => setActive(false)}
 			>
@@ -98,10 +162,10 @@ const Planet = ({ data }: PlanetProps) => {
 			</Link>
 		);
 	};
-
 	return (
 		<Layout>
 			<Nav />
+			{/* MOBILE BUTTONS  */}
 			<div tw="border-b border-grey-800/70 text-4xs font-spartan font-bold uppercase flex justify-between px-6 md:(hidden)">
 				{mobileLinks.map(link => renderMobileLink(link))}
 			</div>
@@ -121,6 +185,7 @@ const Planet = ({ data }: PlanetProps) => {
 					]}
 				>
 					<div tw="flex justify-center py-20 md:(py-28) xl:(w-10/12)">
+						{/* PLANET IMAGE  */}
 						<div
 							css={[
 								`width: 6.9375rem; height: 6.9375rem;`,
@@ -128,7 +193,7 @@ const Planet = ({ data }: PlanetProps) => {
 								`@media (min-width: 1280px) { width: 18.125rem;  height: 18.125rem; }`,
 							]}
 						>
-							<GatsbyImage image={showImage} />
+							<GatsbyImage image={showImage} alt="" />
 						</div>
 					</div>
 					<div
@@ -138,11 +203,14 @@ const Planet = ({ data }: PlanetProps) => {
 							`@media (min-width: 1280px) { width: 21.875rem;  height: 33.8125rem; }`,
 						]}
 					>
+						{/* INFO CARD  */}
 						<InfoCard
 							name={name}
 							content={cardInfo.content}
 							source={cardInfo.source}
 						/>
+
+						{/* BUTTONS  */}
 						<div
 							tw="hidden md:(flex flex-col justify-between)"
 							css={[
@@ -150,16 +218,14 @@ const Planet = ({ data }: PlanetProps) => {
 								`@media (min-width: 1280px) { width: 21.875rem; height: 11rem; }`,
 							]}
 						>
-							{renderButtons(
-								slug.current,
-								setCardInfo,
-								planetOverview,
-								planetStructure,
-								planetGeology
+							{buttonLabels.map(button =>
+								renderButton(button)
 							)}
 						</div>
 					</div>
 				</div>
+
+				{/* PLANET FACTS  */}
 				<div
 					tw="flex flex-col justify-between mx-auto md:(flex-row) xl:(mt-20)"
 					css={[
@@ -204,16 +270,19 @@ export const query = graphql`
 			image {
 				asset {
 					gatsbyImageData(placeholder: BLURRED)
+					url
 				}
 			}
 			internalImage {
 				asset {
 					gatsbyImageData(placeholder: BLURRED)
+					url
 				}
 			}
 			geologyImage {
 				asset {
 					gatsbyImageData(placeholder: BLURRED)
+					url
 				}
 			}
 		}

@@ -11,7 +11,10 @@ import chevron from '../../assets/icon-chevron.svg';
 const renderMobileLinks = () => {
 	return navLinks.map(link => {
 		return (
-			<div tw="flex justify-between items-center content-center py-5">
+			<div
+				key={link.name}
+				tw="flex justify-between items-center content-center py-5"
+			>
 				<div
 					tw="flex justify-between items-center content-center text-sm font-spartan font-bold uppercase tracking-loosey"
 					css={[`height: 1.5rem;`]}

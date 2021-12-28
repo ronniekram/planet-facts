@@ -107,6 +107,8 @@ const Planet = ({ data }: PlanetProps) => {
 		}
 	};
 
+	console.log(color);
+
 	return (
 		<Layout>
 			<Nav />

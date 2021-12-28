@@ -77,7 +77,13 @@ export interface MobileLinkProps {
 
 export const renderFacts = (facts: SmallCardProps[]) => {
 	return facts.map(fact => {
-		return <SmallCard title={fact.title} data={fact.data} />;
+		return (
+			<SmallCard
+				title={fact.title}
+				data={fact.data}
+				key={fact.title}
+			/>
+		);
 	});
 };
 
@@ -145,6 +151,7 @@ export const renderMobileLink = ({
 	return (
 		<Link
 			to="#"
+			key={link}
 			css={[
 				color && textColors[color],
 				tw`opacity-50 border-b-4 border-transparent hocus:(opacity-100)`,
@@ -179,6 +186,9 @@ export const renderButton = ({
 }: MobileLinkProps) => {
 	return (
 		<Button
+			key={
+				button ? button.label : Math.floor(Math.random() * 50)
+			}
 			number={button ? button.number : `0`}
 			label={button ? button.label : ``}
 			activeColor={color ? color : `white`}

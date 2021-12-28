@@ -10,7 +10,10 @@ import './mobile.css';
 const renderLinks = () => {
 	return navLinks.map(link => {
 		return (
-			<li tw="list-none md:(leading-4 tracking-normal)">
+			<li
+				tw="list-none md:(leading-4 tracking-normal)"
+				key={link.url}
+			>
 				<Link
 					to={link.url}
 					tw="opacity-70 hocus:(opacity-100)"

@@ -35,6 +35,7 @@ const Planet = ({ data }: PlanetProps) => {
 		revolution,
 		rotation,
 		temperature,
+		color,
 		planetOverview,
 		planetStructure,
 		planetGeology,
@@ -150,7 +151,7 @@ const Planet = ({ data }: PlanetProps) => {
 			<Link
 				to="#"
 				css={[
-					textColors[slug.current],
+					textColors[color],
 					tw`opacity-50 border-b-4 border-transparent hocus:(opacity-100)`,
 					tw`py-4`,
 					tw`text-4xs leading-2 tracking-looser`,

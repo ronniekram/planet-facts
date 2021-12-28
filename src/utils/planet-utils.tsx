@@ -25,6 +25,7 @@ export interface PlanetProps {
 			revolution: string;
 			rotation: string;
 			temperature: string;
+			color: Color | string;
 			slug: {
 				current: Color | string;
 			};

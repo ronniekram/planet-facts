@@ -12,7 +12,7 @@ import {
 export interface ButtonProps {
 	number: string;
 	label: string;
-	activeColor: Color;
+	activeColor: Color | string;
 	onClick?: () => void;
 }
 
@@ -22,23 +22,23 @@ const Button = ({
 	activeColor,
 	onClick,
 }: ButtonProps) => {
-	const [active, setActive] = useState(false);
+	const [active, setActive] = useState<boolean>(false);
 
 	const buttonStyles = [
+		backgroundColors[activeColor],
 		tw`font-spartan font-bold uppercase`,
-		tw`bg-transparent`,
 		tw`border border-white/50`,
 		tw`hover:(bg-grey-800 border-transparent)`,
 		tw`focus:(border-transparent)`,
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
-		active && backgroundColors[activeColor],
+		!active && tw`bg-transparent`,
 		`width: 17.5625rem; height: 2.5rem`,
 		`@media (min-width: 1280px) { width: 21.875rem; height: 3rem; }`,
 	];
 
 	const labelStyles = [
-		tw`flex items-center content-center justify-around`,
+		tw`flex items-center content-center justify-around text-white`,
 		tw`font-bold`,
 		tw`ml-5 xl:(ml-7)`,
 	];

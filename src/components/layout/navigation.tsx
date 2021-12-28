@@ -3,50 +3,9 @@ import { Link } from 'gatsby';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
 import MobileNav from './mobile-navigation';
+import { navLinks } from '../../utils/nav-utils';
 import burger from '../../assets/icon-hamburger.svg';
-import { Color } from '../../utils/color-utils';
 import './mobile.css';
-
-export type NavLink = {
-	name: string;
-	url: string;
-	color: Color;
-};
-
-export const navLinks: NavLink[] = [
-	{
-		name: `Mercury`,
-		url: `/planets/mercury`,
-		color: `mercury`,
-	},
-	{ name: `Venus`, url: `/planets/venus`, color: `venus` },
-	{
-		name: `Earth`,
-		url: `/planets/earth`,
-		color: `earth`,
-	},
-	{ name: `Mars`, url: `/planets/mars`, color: `mars` },
-	{
-		name: `Jupiter`,
-		url: `/planets/jupiter`,
-		color: `jupiter`,
-	},
-	{
-		name: `Saturn`,
-		url: `/planets/saturn`,
-		color: `saturn`,
-	},
-	{
-		name: `Uranus`,
-		url: `/planets/uranus`,
-		color: `uranus`,
-	},
-	{
-		name: `Neptune`,
-		url: `/planets/neptune`,
-		color: `neptune`,
-	},
-];
 
 const renderLinks = () => {
 	return navLinks.map(link => {

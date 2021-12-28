@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import tw, { css } from 'twin.macro';
-import {
-	textColors,
-	backgroundColors,
-	Color,
-} from '../../utils/color-utils';
-
-// ===== STYLES =====
+import { textColors, Color } from '../../utils/color-utils';
 
 // ===== COMPONENTS =====
 

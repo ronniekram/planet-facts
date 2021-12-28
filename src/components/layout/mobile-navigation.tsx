@@ -1,8 +1,8 @@
 import React from 'react';
 import 'twin.macro';
-import tw, { styled, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 import { Link } from 'gatsby';
-import { navLinks } from './navigation';
+import { navLinks } from '../../utils/nav-utils';
 import { backgroundColors } from '../../utils/color-utils';
 import chevron from '../../assets/icon-chevron.svg';
 

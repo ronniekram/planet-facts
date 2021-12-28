@@ -1,9 +1,3 @@
-import React, { SetStateAction } from 'react';
-import Button from '../components/basic/button';
-import tw, { styled, css } from 'twin.macro';
-import { Color } from './color-utils';
-import { handleButtonClick } from './event-utils';
-
 // TYPES
 // FOR OVERVIEW, STRUCTURE & GEOLOGY
 type CardInfo = {

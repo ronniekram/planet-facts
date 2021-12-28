@@ -1,6 +1,6 @@
 import React from 'react';
 import 'twin.macro';
-import tw, { styled, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 
 // STYLES
 

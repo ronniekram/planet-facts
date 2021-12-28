@@ -1,6 +1,6 @@
 import React from 'react';
 import 'twin.macro';
-import tw, { styled, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { PlanetImage } from '../../utils/planet-utils';
 import './image.css';

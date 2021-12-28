@@ -4,8 +4,10 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 import Nav from '../components/layout/navigation';
 import InfoCard from '../components/cards/info-card';
+import PlanetImages from '../components/planet/image';
 import Button from '../components/basic/button';
 import { SmallCardProps } from '../components/cards/small-card';
 import {
@@ -53,24 +55,26 @@ const Planet = ({ data }: PlanetProps) => {
 		source: planetOverview.source,
 	});
 
-	const [showImage, setShowImage] = useState(
-		image.asset.gatsbyImageData
-	);
+	const [showImage, setShowImage] = useState(image);
 
-	const setCardState = info => {
+	const setCardState = (info: {
+		content: string;
+		source: string;
+		planetImage: string;
+	}) => {
 		setCardInfo({
 			content: info?.content,
 			source: info?.source,
 		});
 
 		if (info?.planetImage === 'overview') {
-			setShowImage(image.asset.gatsbyImageData);
+			setShowImage(image);
 		}
 		if (info?.planetImage === 'structure') {
-			setShowImage(internalImage.asset.gatsbyImageData);
+			setShowImage(internalImage);
 		}
 		if (info?.planetImage === 'geology') {
-			setShowImage(geologyImage.asset.gatsbyImageData);
+			setShowImage(geologyImage);
 		}
 	};
 
@@ -87,7 +91,15 @@ const Planet = ({ data }: PlanetProps) => {
 			planetGeology,
 		});
 
-		setCardState(info);
+		setCardState(
+			info
+				? info
+				: {
+						content: planetOverview.content,
+						source: planetOverview.source,
+						planetImage: 'overview',
+				  }
+		);
 	};
 
 	const handleDeskButtonClick = (
@@ -103,7 +115,15 @@ const Planet = ({ data }: PlanetProps) => {
 			planetGeology,
 		});
 
-		setCardState(info);
+		setCardState(
+			info
+				? info
+				: {
+						content: planetOverview.content,
+						source: planetOverview.source,
+						planetImage: 'overview',
+				  }
+		);
 	};
 
 	const renderButton = (button: ButtonLabel) => {
@@ -151,8 +171,10 @@ const Planet = ({ data }: PlanetProps) => {
 			</Link>
 		);
 	};
+
 	return (
 		<Layout>
+			<SEO title={name} />
 			<Nav />
 			{/* MOBILE BUTTONS  */}
 			<div tw="border-b border-grey-800/70 text-4xs font-spartan font-bold uppercase flex justify-between px-6 md:(hidden)">
@@ -166,24 +188,24 @@ const Planet = ({ data }: PlanetProps) => {
 				]}
 			>
 				<div
-					tw="mx-auto xl:(flex justify-between)"
+					tw="mx-auto xl:(flex justify-between items-center content-center)"
 					css={[
 						`width: 20.4375rem;`,
 						`@media (min-width: 768px) { width: 43.0625rem; }`,
 						`@media (min-width: 1280px) { width: 69.375rem; }`,
 					]}
 				>
-					<div tw="flex justify-center py-20 md:(py-28) xl:(w-10/12)">
+					<div
+						tw="flex items-center justify-center xl:(w-9/12 relative z-10)"
+						css={[
+							`@media (min-width: 1280px) { height: 36.375rem; }`,
+						]}
+					>
 						{/* PLANET IMAGE  */}
-						<div
-							css={[
-								`width: 6.9375rem; height: 6.9375rem;`,
-								`@media (min-width: 768px) { width: 11.5rem; height: 11.5rem; }`,
-								`@media (min-width: 1280px) { width: 18.125rem;  height: 18.125rem; }`,
-							]}
-						>
-							<GatsbyImage image={showImage} alt="" />
-						</div>
+						<PlanetImages
+							image={image}
+							showImage={showImage}
+						/>
 					</div>
 					<div
 						tw="flex flex-col items-center content-center mx-auto mb-7 md:(flex-row w-full justify-between) xl:(flex-col mx-0)"
@@ -241,6 +263,7 @@ export const query = graphql`
 			revolution
 			rotation
 			temperature
+			color
 			slug {
 				current
 			}
@@ -257,21 +280,30 @@ export const query = graphql`
 				source
 			}
 			image {
+				caption
 				asset {
-					gatsbyImageData(placeholder: BLURRED)
-					url
+					gatsbyImageData(
+						layout: CONSTRAINED
+						placeholder: BLURRED
+					)
 				}
 			}
 			internalImage {
+				caption
 				asset {
-					gatsbyImageData(placeholder: BLURRED)
-					url
+					gatsbyImageData(
+						layout: CONSTRAINED
+						placeholder: BLURRED
+					)
 				}
 			}
 			geologyImage {
+				caption
 				asset {
-					gatsbyImageData(placeholder: BLURRED)
-					url
+					gatsbyImageData(
+						layout: CONSTRAINED
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

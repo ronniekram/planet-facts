@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOValues {
 	description?: string;
@@ -38,7 +38,7 @@ function SEO({
 				lang,
 			}}
 			title={title}
-			titleTemplate={`%s | ${defaultTitle}`}
+			titleTemplate={`${defaultTitle} | %s `}
 			defaultTitle={defaultTitle}
 			meta={[
 				{

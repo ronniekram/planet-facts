@@ -1,6 +1,6 @@
 module.exports = {
 	siteMetadata: {
-		title: `Frontend Mentor: Planet Facts Site`,
+		title: `Planet Facts`,
 		description: `Frontend Mentor: Planet Facts Site`,
 		author: `@ronniekram`,
 	},

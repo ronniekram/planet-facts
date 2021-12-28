@@ -1,11 +1,14 @@
-import { GatsbyImageProps } from 'gatsby-plugin-image';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import SmallCard, {
 	SmallCardProps,
 } from '../components/cards/small-card';
 import { Color } from './color-utils';
 
 export type PlanetImage = {
-	asset: { gatsbyImageData: GatsbyImageProps; url: string };
+	caption: string;
+	asset: {
+		gatsbyImageData: IGatsbyImageData;
+	};
 };
 
 export type PlanetDetails = {
@@ -37,24 +40,9 @@ export interface PlanetProps {
 				content: string;
 				source: string;
 			};
-			image: {
-				asset: {
-					gatsbyImageData: GatsbyImageProps;
-					url: string;
-				};
-			};
-			internalImage: {
-				asset: {
-					gatsbyImageData: GatsbyImageProps;
-					url: string;
-				};
-			};
-			geologyImage: {
-				asset: {
-					gatsbyImageData: GatsbyImageProps;
-					url: string;
-				};
-			};
+			image: PlanetImage;
+			internalImage: PlanetImage;
+			geologyImage: PlanetImage;
 		};
 	};
 }

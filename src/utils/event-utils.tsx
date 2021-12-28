@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlanetDetails } from '../templates/planet';
+import { PlanetDetails } from '../utils/planet-utils';
 import { ButtonLabel } from './button-utils';
 
 export interface ClickProps {

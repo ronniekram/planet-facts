@@ -1,0 +1,16 @@
+.planetImage img {
+	width: 72%;
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+	.planetImage img {
+		width: 68%;
+	}
+}
+
+@media (min-width: 1280px) {
+	.planetImage img {
+		width: 100%;
+	}
+}

@@ -16,7 +16,6 @@ import {
 	renderFacts,
 	mobileLinks,
 } from '../utils/planet-utils';
-import './planet.css';
 
 // ===== STYLES =====
 const MobileContainer = styled.div`

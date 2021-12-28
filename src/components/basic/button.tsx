@@ -31,7 +31,7 @@ const Button = ({
 		tw`border border-white/50`,
 		tw`bg-transparent`,
 		tw`hover:(bg-grey-800 border-transparent)`,
-		tw`focus:(border-transparent)`,
+		tw`focus:(border-transparent bg-current)`,
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
 		active && tw`bg-current`,

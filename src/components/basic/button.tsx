@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import tw, { css } from 'twin.macro';
 import {
+	textColors,
 	backgroundColors,
 	Color,
 } from '../../utils/color-utils';
@@ -25,20 +26,21 @@ const Button = ({
 	const [active, setActive] = useState<boolean>(false);
 
 	const buttonStyles = [
-		backgroundColors[activeColor],
+		textColors[activeColor],
 		tw`font-spartan font-bold uppercase`,
 		tw`border border-white/50`,
+		tw`bg-transparent`,
 		tw`hover:(bg-grey-800 border-transparent)`,
 		tw`focus:(border-transparent)`,
 		tw`text-4xs leading-4 tracking-looser`,
 		tw`xl:(text-2xs tracking-loosest)`,
-		!active && tw`bg-transparent`,
+		active && tw`bg-current`,
 		`width: 17.5625rem; height: 2.5rem`,
 		`@media (min-width: 1280px) { width: 21.875rem; height: 3rem; }`,
 	];
 
 	const labelStyles = [
-		tw`flex items-center content-center justify-around text-white`,
+		tw`flex items-center content-center justify-around text-white!`,
 		tw`font-bold`,
 		tw`ml-5 xl:(ml-7)`,
 	];

@@ -132,7 +132,7 @@ const Planet = ({ data }: PlanetProps) => {
 			<Button
 				number={button.number}
 				label={button.label}
-				activeColor={slug.current}
+				activeColor={color}
 				onClick={() => {
 					handleDeskButtonClick(
 						button,

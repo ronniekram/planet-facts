@@ -156,6 +156,7 @@ export const renderMobileLink = ({
 				color && textColors[color],
 				tw`opacity-50 border-b-4 border-transparent hocus:(opacity-100)`,
 				tw`py-4`,
+				tw`transition transition-opacity duration-300`,
 				tw`text-4xs leading-2 tracking-looser`,
 				active && tw`border-b-4 border-current`,
 			]}

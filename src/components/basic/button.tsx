@@ -24,6 +24,7 @@ const Button = ({
 		tw`font-spartan font-bold uppercase`,
 		tw`border border-white/50`,
 		tw`bg-transparent`,
+		tw`transition-colors duration-300`,
 		tw`hover:(bg-grey-800 border-transparent)`,
 		tw`focus:(border-transparent bg-current)`,
 		tw`text-4xs leading-4 tracking-looser`,

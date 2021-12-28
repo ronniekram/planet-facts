@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
 import MobileNav from './mobile-navigation';
@@ -14,12 +15,14 @@ const renderLinks = () => {
 				tw="list-none md:(leading-4 tracking-normal)"
 				key={link.url}
 			>
-				<Link
+				<AniLink
+					fade
 					to={link.url}
+					duration={1.5}
 					tw="opacity-70 hocus:(opacity-100)"
 				>
 					{link.name}
-				</Link>
+				</AniLink>
 			</li>
 		);
 	});

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'twin.macro';
 import tw, { css } from 'twin.macro';
-import { Link } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { navLinks } from '../../utils/nav-utils';
 import { backgroundColors } from '../../utils/color-utils';
 import chevron from '../../assets/icon-chevron.svg';
@@ -23,9 +23,14 @@ const renderMobileLinks = () => {
 						tw="w-5 h-5 rounded-full mr-5"
 						css={[backgroundColors[link.color]]}
 					/>
-					<Link to={link.url} tw="pt-1">
+					<AniLink
+						fade
+						to={link.url}
+						duration={1.5}
+						tw="pt-1"
+					>
 						{link.name}
-					</Link>
+					</AniLink>
 				</div>
 
 				<div>

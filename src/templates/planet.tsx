@@ -16,6 +16,7 @@ import {
 	renderFacts,
 	mobileLinks,
 } from '../utils/planet-utils';
+import './planet.css';
 
 // ===== STYLES =====
 const MobileContainer = styled.div`
@@ -133,6 +134,7 @@ const Planet = ({ data }: PlanetProps) => {
 					`@media (min-width: 768px) { margin-top: 3.125rem; }`,
 					`@media (min-width: 1280px) { margin-top: 7.875rem; }`,
 				]}
+				className="fadeIn"
 			>
 				<div
 					tw="mx-auto xl:(flex justify-between items-center content-center)"
